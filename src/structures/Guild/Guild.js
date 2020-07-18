@@ -46,5 +46,12 @@ class Guild {
   get ranks () {
     return this._data.ranks ? this._data.ranks.map(r => new GuildRank(r)).sort((a, b) => a.priority - b.priority) : null;
   }
+
+  /**
+  * @returns {number}
+  */
+  get onlineMembers () {
+    return this._data.members ? this._data.members.map(m => new GuildMember(m)).filter(m => m.isOnline).length() : null;
+  }
 }
 module.exports = Guild;
